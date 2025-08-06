@@ -1,58 +1,50 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(ProfileApp());
+  runApp(MyFirstFlutterApp());
 }
 
-/// Root of the Profile Screen app.
-class ProfileApp extends StatelessWidget {
+/// Root of the Splash Screen app.
+class MyFirstFlutterApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Profile Screen',
-      home: ProfileScreen(),
+      title: 'Splash Screen',
+      home: SplashScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-/// Displays avatar, name, email, and location.
-class ProfileScreen extends StatelessWidget {
+/// Displays a centered logo with a tagline.
+class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[900],
+      backgroundColor: Colors.blue[900], // Navy blue background
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(24.0), // Screen padding
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                radius: 60,
-                backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.person,
-                  size: 60,
-                  color: Colors.blue[900],
+          padding: const EdgeInsets.all(24.0), // Padding around the screen
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.fastfood,
+                  size: 100,
+                  color: Colors.white,
                 ),
-              ),
-              SizedBox(height: 24),
-              Text(
-                'Sida Kiran',
-                style: TextStyle(color: Colors.white, fontSize: 22),
-              ),
-              SizedBox(height: 10),
-              Text(
-                'sidrakiran1117@gmail.com',
-                style: TextStyle(color: Colors.white70),
-              ),
-              SizedBox(height: 10),
-              Text(
-                'Rawalpindi, Pakistan',
-                style: TextStyle(color: Colors.white70),
-              ),
-            ],
+                SizedBox(height: 24), // Space between icon and text
+                Text(
+                  'Simple. Fast. Flutter.',
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.white,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
           ),
         ),
       ),
