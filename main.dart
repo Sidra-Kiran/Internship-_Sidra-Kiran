@@ -1,51 +1,51 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyFirstFlutterApp());
+  runApp(InterestsApp());
 }
 
-/// Root of the Splash Screen app.
-class MyFirstFlutterApp extends StatelessWidget {
+/// Root of the Interests screen app.
+class InterestsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Splash Screen',
-      home: SplashScreen(),
+      title: 'My Interests',
+      home: InterestsScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-/// Displays a centered logo with a tagline.
-class SplashScreen extends StatelessWidget {
+/// Displays a scrollable list of interests with icons.
+class InterestsScreen extends StatelessWidget {
+  final List<Map<String, dynamic>> hobbies = [
+    {'icon': Icons.menu_book, 'title': 'Reading'},
+    {'icon': Icons.sports_esports, 'title': 'Gaming'},
+    {'icon': Icons.kitchen, 'title': 'Cooking'},
+    {'icon': Icons.self_improvement, 'title': 'Yoga'},
+    {'icon': Icons.brush, 'title': 'Drawing'},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[900], // Navy blue background
+      backgroundColor: Colors.blue[900],
+      appBar: AppBar(
+        title: Text("My Interests"),
+        backgroundColor: Colors.blue[800],
+      ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(24.0), // Padding around the screen
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.fastfood,
-                  size: 100,
-                  color: Colors.white,
-                ),
-                SizedBox(height: 24), // Space between icon and text
-                Text(
-                  'Simple. Fast. Flutter.',
-                  style: TextStyle(
-                    fontSize: 24,
-                    color: Colors.white,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-          ),
+        child: ListView.builder(
+          itemCount: hobbies.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: Icon(hobbies[index]['icon'], color: Colors.white),
+              title: Text(
+                hobbies[index]['title'],
+                style: TextStyle(color: Colors.white),
+              ),
+            );
+          },
         ),
       ),
     );
